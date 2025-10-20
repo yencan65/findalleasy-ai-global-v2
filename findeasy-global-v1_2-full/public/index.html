@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FindEasy • Global Marketplace Bridge</title>
+<style>
+:root{--bg:#0f1220;--fg:#e8eaf2;--muted:#aab1d6;--card:#141a2e;--border:#222845;--accent:#6ee7ff;--green:#22c55e}
+*{box-sizing:border-box}body{font-family:Inter,system-ui,Arial;margin:0;background:var(--bg);color:var(--fg)}
+header{padding:24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border)}
+.brand{font-weight:800;font-size:20px}
+.nav a{color:var(--fg);text-decoration:none;margin:0 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;padding:24px;max-width:1180px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;display:flex;gap:8px;flex-direction:column}
+.img{height:150px;background:#0b0f24;border-radius:12px;overflow:hidden}.img img{width:100%;height:100%;object-fit:cover}
+.row{display:flex;justify-content:space-between;align-items:center}.price{font-weight:800}.muted{color:var(--muted);font-size:12px}
+.save{background:rgba(34,197,94,.12); color:#8af0b3; border:1px solid rgba(34,197,94,.4); font-size:12px; padding:4px 8px; border-radius:999px}
+.btn{background:var(--accent);color:#0b1024;font-weight:800;border:none;padding:10px 12px;border-radius:10px;cursor:pointer}
+</style></head><body>
+<header>
+  <div class="brand">FindEasy</div>
+  <nav class="nav"><a href="/deals.html">Deals</a> <a href="/feeds.html">Feeds</a> <a href="/admin.html">Admin</a></nav>
+</header>
+<div class="grid" id="grid"></div>
+<script>
+async function j(u){ const r=await fetch(u); return r.json(); }
+async function load(){
+  const products = await j('/api/products');
+  const compare = await j('/api/compare-prices?ids='+products.map(p=>p.id).join(','));
+  const g = document.getElementById('grid'); g.innerHTML='';
+  products.forEach(p=>{
+    const comp = compare[p.id]; const better = comp && comp.sourcePrice && p.price < comp.sourcePrice;
+    const el = document.createElement('div'); el.className='card';
+    el.innerHTML = '<div class="img">'+(p.image?'<img src="'+p.image+'">':'')+'</div>'+
+      '<div class="row"><div style="font-weight:700">'+p.title+'</div><div class="price">'+Number(p.price).toLocaleString()+' ₺</div></div>'+
+      '<div class="row"><div class="muted">'+(p.seller||'')+'</div>'+(better?'<span class="save">Bizde '+(comp.sourcePrice-p.price).toFixed(2)+' ₺ daha uygun</span>':'')+'</div>'+
+      '<button class="btn" onclick="go('+`'${p.id}'`+')">Buy / Go</button>';
+    g.appendChild(el);
+  });
+}
+async function go(id){
+  // demo: redirect endpoint simulates affiliate or internal checkout decision
+  const r = await fetch('/api/redirect?id='+id);
+  const data = await r.json();
+  if(data.url){ location.href = data.url; } else { alert('Checkout coming soon (demo)'); }
+}
+load();
+</script></body></html>

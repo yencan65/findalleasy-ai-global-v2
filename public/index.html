@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FindAllEasy — Global Marketplace (AI)</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="/img/logo.svg">
+</head>
+<body>
+  <header class="wrap">
+    <div class="brand">
+      <img src="/img/logo.svg" alt="FindAllEasy" class="logo">
+      <span class="brand-name">FindAllEasy</span>
+    </div>
+    <div class="lang-block">
+      <select id="langSelect" aria-label="Language"></select>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p id="slogan" class="slogan"><span data-i18n="slogan">Dünyanın her yerinde en uygun fiyat</span></p>
+    <div class="search-row">
+      <input id="searchInput" class="search" type="text" placeholder="iPhone 15 Pro, Dyson V15..." autocomplete="off">
+      <button id="voiceBtn" class="icon-btn" title="Sesle Ara">🎤</button>
+      <label class="icon-btn" title="Görsel Ara">
+        📷
+        <input id="imageInput" type="file" accept="image/*" capture="environment" hidden>
+      </label>
+      <button id="goBtn" class="go"><span data-i18n="search">Ara</span></button>
+    </div>
+    <div class="hint" data-i18n="hint">Tarayıcı diliniz otomatik algılanır. Dilerseniz sağdan değiştirebilirsiniz.</div>
+
+    <section id="results" class="grid"></section>
+  </main>
+
+  <footer class="wrap foot">
+    <small>© <span id="year"></span> FindAllEasy • <a href="/admin.html">Admin</a></small>
+  </footer>
+
+  <script src="/i18n.js"></script>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

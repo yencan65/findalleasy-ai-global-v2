@@ -1,0 +1,67 @@
+{
+  "settings": {
+    "dynamic_pricing_enabled": true,
+    "min_commission": 0.03,
+    "default_commission": 0.12,
+    "deals_enabled": true
+  },
+  "sellers": [],
+  "feeds": [
+    {
+      "id": "feed_shopify_demo",
+      "type": "shopify",
+      "baseUrl": "https://demo-shop.myshopify.com",
+      "active": false,
+      "lastPull": null
+    },
+    {
+      "id": "feed_woo_demo",
+      "type": "woocommerce",
+      "baseUrl": "https://demo-woo.com",
+      "active": false,
+      "lastPull": null
+    },
+    {
+      "id": "feed_amazon_demo",
+      "type": "amazon_affiliate",
+      "tag": "findeasy-20",
+      "active": false,
+      "lastPull": null
+    },
+    {
+      "id": "feed_booking_demo",
+      "type": "booking_affiliate",
+      "partnerId": "XXXX",
+      "active": false,
+      "lastPull": null
+    }
+  ],
+  "products": [
+    {
+      "id": "prd_demo1",
+      "title": "Yoga Online Course",
+      "price": 499,
+      "seller": "edu_yoga_c",
+      "image": "https://picsum.photos/seed/yoga/600/400",
+      "source": "manual"
+    },
+    {
+      "id": "prd_demo2",
+      "title": "Efes & Pamukkale Tour",
+      "price": 2499,
+      "seller": "tour_agency_a",
+      "image": "https://picsum.photos/seed/tour/600/400",
+      "source": "manual"
+    },
+    {
+      "id": "prd_demo3",
+      "title": "Car Rental (Daily)",
+      "price": 1750,
+      "seller": "rentacar_x",
+      "image": "https://picsum.photos/seed/car/600/400",
+      "source": "manual"
+    }
+  ],
+  "orders": [],
+  "redirects": []
+}
