@@ -1,262 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FindAllEasy — World Edition</title>
-  <style>
-    :root{
-      --bg1:#0a0a0f;
-      --bg2:#101829;
-      --card:#141a2e;
-      --pri:#00aaff;
-      --text:#ffffff;
-      --muted:#b0b0b0;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      color: var(--text);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      min-height:100vh;
-      text-align:center;
-    }
-    header{margin-top:56px}
-    .slogan{
-      font-size: clamp(22px, 3vw, 32px);
-      font-weight:600;
-      margin:0 0 8px 0;
-      border-bottom:2px solid var(--pri);
-      display:inline-block;
-      padding-bottom:6px;
-    }
-    .sub-slogan{
-      font-size:14px;
-      color:var(--muted);
-      margin:6px 0 22px 0;
-    }
-    .search-wrap{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      background:#1a1f2e;
-      padding:10px 14px;
-      border-radius:40px;
-      box-shadow:0 0 12px rgba(0,170,255,.25);
-      margin-bottom:28px;
-    }
-    .icon-btn{
-      background:none;border:none;color:var(--text);
-      cursor:pointer;padding:6px;display:flex;align-items:center;justify-content:center;
-    }
-    .icon{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}
-    input.search{
-      flex:1;background:transparent;border:none;outline:none;color:var(--text);
-      font-size:15px;min-width:220px;
-    }
-    button.primary{
-      background:var(--pri);border:none;color:#fff;font-weight:600;
-      padding:10px 20px;border-radius:24px;cursor:pointer;
-    }
-    .vitrin{
-      width:92%;max-width:1040px;margin:10px auto 64px auto;
-      display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      text-align:left;
-    }
-    .card{
-      background:var(--card);border-radius:16px;padding:18px;
-      box-shadow:0 0 10px rgba(0,170,255,.12);
-    }
-    .card h3{margin:0 0 6px 0;color:var(--pri);font-size:18px}
-    .card p{margin:0 0 10px 0;color:#d0d0d0;font-size:14px;line-height:1.35}
-    .card .small{font-size:12px;color:#9aa4b2}
-    .region-title{margin:8px 0 10px 0;font-size:18px}
-    .footer{color:#8c9aaa;margin:0 0 38px 0;font-size:12px}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FindAllEasy - Global Marketplace</title>
+<style>
+  body {margin:0;font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; background:linear-gradient(135deg,#0a0a0f,#101829); color:#fff; text-align:center;}
+  .slogan{margin-top:60px;font-size:2rem;font-weight:600;border-bottom:2px solid #00aaff;display:inline-block;padding-bottom:5px;}
+  .sub{color:#b0b0b0;font-size:1rem;margin-bottom:1.5rem;}
+  .search-box{display:flex;justify-content:center;align-items:center;gap:10px;background:#1a1f2e;padding:12px 20px;border-radius:40px;width:fit-content;margin:0 auto 32px;box-shadow:0 0 12px rgba(0,170,255,0.3);}
+  input[type=text]{border:none;background:transparent;color:#fff;font-size:1rem;width:260px;outline:none;}
+  button{border:none;background:#00aaff;color:#fff;padding:10px 20px;border-radius:25px;cursor:pointer;font-weight:600;}
+  .icon-btn{background:none;border:none;color:#fff;cursor:pointer;font-size:1.25rem;}
+  .vitrin{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:20px;width:92%;max-width:1000px;margin:0 auto 64px;}
+  .card{background:#141a2e;border-radius:16px;padding:18px;text-align:left;box-shadow:0 0 10px rgba(0,170,255,0.1);}
+  .card h3{color:#00aaff;margin:0 0 6px 0;font-size:18px;}
+  .card p{font-size:0.9rem;color:#ccc;margin:0;}
+</style>
 </head>
 <body>
-  <header>
-    <h1 id="slogan" class="slogan">Globalde en uygun fiyat tek tıkla, gerisini biz hallederiz.</h1>
-    <p id="subslogan" class="sub-slogan">FindAllEasy — World Edition</p>
-  </header>
+  <h1 id="slogan" class="slogan">Globalde en uygun fiyat tek tıkla, gerisini biz hallederiz.</h1>
+  <p id="subs" class="sub">FindAllEasy — Global Marketplace</p>
 
-  <section class="search-wrap">
-    <button id="voiceBtn" class="icon-btn" title="Voice Search" aria-label="Voice Search">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 1 1-6 0V6a3 3 0 0 1 3-3Z"/>
-        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-        <path d="M12 19v3"/>
-      </svg>
-    </button>
-    <button id="imageBtn" class="icon-btn" title="Image Search" aria-label="Image Search">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M3 7a2 2 0 0 1 2-2h3l2-2h4l2 2h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/>
-        <circle cx="12" cy="13" r="3"/>
-      </svg>
-    </button>
-    <input id="fileInput" type="file" accept="image/*" style="display:none" />
-    <input id="search" class="search" type="text" placeholder="" />
-    <button id="searchBtn" class="primary">Ara</button>
-  </section>
+  <div class="search-box">
+    <button id="voice" class="icon-btn" title="Sesli Arama">🎤</button>
+    <button id="image" class="icon-btn" title="Görsel Arama">📷</button>
+    <input type="file" id="imgInput" accept="image/*" style="display:none;">
+    <input type="text" id="search" placeholder="">
+    <button id="searchBtn">Ara</button>
+  </div>
 
-  <h2 id="regionTitle" class="region-title">🌍 Bölgende trend olan ürünler</h2>
-  <section id="vitrin" class="vitrin"></section>
+  <div id="vitrin" class="vitrin"></div>
 
-  <p class="footer">© FindAllEasy · Global smart search</p>
+<script>
+(function(){
+  const base = (navigator.language||'en').toLowerCase().split('-')[0];
+  const dir = (base==='ar' || base==='fa' || base==='he') ? 'rtl' : 'ltr';
+  document.documentElement.setAttribute('dir', dir);
 
-  <script>
-    const rawLang = (navigator.language || 'en').toLowerCase();
-    const base = rawLang.split('-')[0];
-    if (base === 'ar') document.documentElement.setAttribute('dir','rtl');
+  const packs = {
+    tr:{s:"Globalde en uygun fiyat tek tıkla, gerisini biz hallederiz.",btn:"Ara",
+        ph:["Otel","Bilet","Tur","Yemek","Moda","Giyim","Aksesuar","Hediyelik Eşya","Gayrimenkul"],
+        vit:["Otel & Tatil","Moda & Aksesuar","Elektronik","Yemek & Restoranlar"]},
+    en:{s:"Best global prices in one click — we handle the rest.",btn:"Search",
+        ph:["Hotel","Ticket","Tour","Food","Fashion","Clothing","Accessories","Gifts","Real Estate"],
+        vit:["Travel & Stays","Fashion & Accessories","Electronics","Food & Restaurants"]},
+    de:{s:"Die besten Preise weltweit – mit nur einem Klick, wir kümmern uns um den Rest.",btn:"Suchen",
+        ph:["Hotel","Ticket","Tour","Essen","Mode","Kleidung","Accessoires","Geschenke","Immobilien"],
+        vit:["Reisen & Hotels","Mode & Accessoires","Elektronik","Essen & Restaurants"]},
+    fr:{s:"Les meilleurs prix mondiaux en un clic – nous nous occupons du reste.",btn:"Rechercher",
+        ph:["Hôtel","Billet","Tour","Restauration","Mode","Vêtements","Accessoires","Cadeaux","Immobilier"],
+        vit:["Voyages & Séjours","Mode & Accessoires","Électronique","Restauration"]},
+    es:{s:"Los mejores precios globales con un solo clic — nosotros nos encargamos del resto.",btn:"Buscar",
+        ph:["Hotel","Billete","Tour","Comida","Moda","Ropa","Accesorios","Regalos","Bienes Raíces"],
+        vit:["Viajes & Estancias","Moda & Accesorios","Electrónica","Comida & Restaurantes"]},
+    it:{s:"I migliori prezzi globali con un solo clic — al resto pensiamo noi.",btn:"Cerca",
+        ph:["Hotel","Biglietto","Tour","Cibo","Moda","Abbigliamento","Accessori","Regali","Immobiliare"],
+        vit:["Viaggi & Soggiorni","Moda & Accessori","Elettronica","Cibo & Ristoranti"]},
+    ru:{s:"Лучшие мировые цены в один клик — остальное мы сделаем за вас.",btn:"Искать",
+        ph:["Отель","Билеты","Тур","Еда","Мода","Одежда","Аксессуары","Подарки","Недвижимость"],
+        vit:["Путешествия & Отели","Мода & Аксессуары","Электроника","Еда & Рестораны"]},
+    ar:{s:"أفضل الأسعار العالمية بنقرة واحدة — نحن نتولى الباقي.",btn:"بحث",
+        ph:["فندق","تذاكر","جولة","طعام","موضة","ملابس","إكسسوارات","هدايا","عقارات"],
+        vit:["السفر والإقامة","الموضة والإكسسوارات","إلكترونيات","مطاعم"]},
+    ja:{s:"世界中の最安値をワンクリックで — あとは私たちにお任せください。",btn:"検索",
+        ph:["ホテル","チケット","ツアー","フード","ファッション","衣類","アクセサリー","ギフト","不動産"],
+        vit:["旅行・宿泊","ファッション・アクセサリー","家電・電子機器","フード・レストラン"]},
+    zh:{s:"全球最佳价格，一键直达——其余交给我们。",btn:"搜索",
+        ph:["酒店","机票","旅游","美食","时尚","服装","配饰","礼品","房地产"],
+        vit:["旅行与住宿","时尚与配饰","电子产品","美食与餐厅"]},
+    ko:{s:"전 세계 최저가를 한 번에 — 나머지는 우리가 처리합니다.",btn:"검색",
+        ph:["호텔","티켓","투어","음식","패션","의류","액세서리","선물","부동산"],
+        vit:["여행 & 숙박","패션 & 액세서리","전자제품","음식 & 레스토랑"]},
+    th:{s:"ราคาดีที่สุดทั่วโลกเพียงคลิกเดียว — ที่เหลือเราจัดการให้.",btn:"ค้นหา",
+        ph:["โรงแรม","ตั๋ว","ทัวร์","อาหาร","แฟชั่น","เสื้อผ้า","เครื่องประดับ","ของขวัญ","อสังหา"],
+        vit:["ท่องเที่ยว & ที่พัก","แฟชั่น & เครื่องประดับ","อิเล็กทรอนิกส์","อาหาร & ร้านอาหาร"]}
+  };
 
-    const speechLocale = {
-      tr:'tr-TR', en:'en-US', de:'de-DE', fr:'fr-FR', es:'es-ES', it:'it-IT',
-      ru:'ru-RU', ar:'ar', ja:'ja-JP', zh:'zh-CN', ko:'ko-KR', th:'th-TH'
-    };
+  const pack = packs[base] || packs.en;
 
-    const T = {
-      tr:{slogan:"Globalde en uygun fiyat tek tıkla, gerisini biz hallederiz.",
-          subs:"FindAllEasy — Dünya Sürümü",
-          placeholderCycle:["Otel","Bilet","Turlar","Yemek","Moda","Giyim","Aksesuar","Kırtasiye"],
-          searchBtn:"Ara",regionTitle:"Bölgende trend olan ürünler",cardCta:"Fiyatları Karşılaştır",
-          vitrin:[["Otel & Tatil","Türkiye'de en uygun konaklama fırsatları"],
-                  ["Moda","Trend giyim ve aksesuarlar"],
-                  ["Elektronik","Popüler cihaz ve kampanyalar"],
-                  ["Yemek","Yakınındaki popüler lezzetler"]]},
-      en:{slogan:"Best global prices in one click — we handle the rest.",
-          subs:"FindAllEasy — World Edition",
-          placeholderCycle:["Hotel","Ticket","Tours","Food","Fashion","Clothing","Accessories","Stationery"],
-          searchBtn:"Search",regionTitle:"Trending products in your region",cardCta:"Compare Prices",
-          vitrin:[["Travel & Stays","Best stays and deals nearby"],
-                  ["Electronics","Top gadgets & hot offers"],
-                  ["Fashion","Latest apparel & accessories"],
-                  ["Food","Popular restaurants around you"]]},
-      de:{slogan:"Die besten Preise weltweit – mit nur einem Klick, wir kümmern uns um den Rest.",
-          subs:"FindAllEasy — World Edition",
-          placeholderCycle:["Hotel","Ticket","Touren","Essen","Mode","Kleidung","Accessoires","Schreibwaren"],
-          searchBtn:"Suchen",regionTitle:"Beliebte Produkte in deiner Region",cardCta:"Preise vergleichen",
-          vitrin:[["Reisen & Hotels","Top-Angebote in deiner Nähe"],
-                  ["Elektronik","Beliebte Geräte & Deals"],
-                  ["Mode","Aktuelle Trends & Accessoires"],
-                  ["Essen","Beliebte Restaurants in der Nähe"]]},
-      fr:{slogan:"Les meilleurs prix mondiaux en un clic – nous nous occupons du reste.",
-          subs:"FindAllEasy — Édition Mondiale",
-          placeholderCycle:["Hôtel","Billet","Tours","Restauration","Mode","Vêtements","Accessoires","Papeterie"],
-          searchBtn:"Rechercher",regionTitle:"Produits tendance dans votre région",cardCta:"Comparer les prix",
-          vitrin:[["Voyages & Séjours","Meilleures offres près de chez vous"],
-                  ["Électronique","Appareils populaires & promos"],
-                  ["Mode","Dernières tendances & accessoires"],
-                  ["Restauration","Restaurants populaires autour de vous"]]},
-      es:{slogan:"Los mejores precios globales con un solo clic — nosotros nos encargamos del resto.",
-          subs:"FindAllEasy — Edición Mundial",
-          placeholderCycle:["Hotel","Billete","Tours","Comida","Moda","Ropa","Accesorios","Papelería"],
-          searchBtn:"Buscar",regionTitle:"Productos de tendencia en tu región",cardCta:"Comparar precios",
-          vitrin:[["Viajes & Estancias","Las mejores ofertas cerca de ti"],
-                  ["Electrónica","Dispositivos y ofertas destacadas"],
-                  ["Moda","Tendencias y accesorios"],
-                  ["Comida","Restaurantes populares cerca de ti"]]},
-      it:{slogan:"I migliori prezzi globali con un solo clic — al resto pensiamo noi.",
-          subs:"FindAllEasy — Edizione Mondiale",
-          placeholderCycle:["Hotel","Biglietto","Tour","Cibo","Moda","Abbigliamento","Accessori","Cancelleria"],
-          searchBtn:"Cerca",regionTitle:"Prodotti di tendenza nella tua zona",cardCta:"Confronta i prezzi",
-          vitrin:[["Viaggi & Soggiorni","Le migliori offerte vicino a te"],
-                  ["Elettronica","Dispositivi popolari & offerte"],
-                  ["Moda","Ultime tendenze & accessori"],
-                  ["Cibo","Ristoranti popolari vicino a te"]]},
-      ru:{slogan:"Лучшие мировые цены в один клик — остальное мы сделаем за вас.",
-          subs:"FindAllEasy — Мировая версия",
-          placeholderCycle:["Отель","Билеты","Туры","Еда","Мода","Одежда","Аксессуары","Канцелярия"],
-          searchBtn:"Искать",regionTitle:"Тренды в вашем регионе",cardCta:"Сравнить цены",
-          vitrin:[["Путешествия & Отели","Лучшие предложения рядом"],
-                  ["Электроника","Популярные устройства и акции"],
-                  ["Мода","Актуальная одежда и аксессуары"],
-                  ["Еда","Популярные рестораны рядом"]]},
-      ar:{slogan:"أفضل الأسعار العالمية بنقرة واحدة — نحن نتولى الباقي.",
-          subs:"FindAllEasy — الإصدار العالمي",
-          placeholderCycle:["فندق","تذاكر","رحلات","طعام","موضة","ملابس","إكسسوارات","قرطاسية"],
-          searchBtn:"ابحث",regionTitle:"المنتجات الرائجة في منطقتك",cardCta:"قارن الأسعار",
-          vitrin:[["السفر والإقامة","أفضل العروض بالقرب منك"],
-                  ["إلكترونيات","أجهزة شائعة وعروض"],
-                  ["موضة","أحدث الأزياء والإكسسوارات"],
-                  ["مطاعم","مطاعم رائجة حولك"]]},
-      ja:{slogan:"世界中の最安値をワンクリックで — あとは私たちにお任せください。",
-          subs:"FindAllEasy — ワールドエディション",
-          placeholderCycle:["ホテル","チケット","ツアー","フード","ファッション","衣料","アクセサリー","文房具"],
-          searchBtn:"検索",regionTitle:"あなたの地域のトレンド商品",cardCta:"価格を比較",
-          vitrin:[["旅行・宿泊","近くのお得な宿泊先"],
-                  ["家電・電子機器","人気ガジェットとセール"],
-                  ["ファッション","最新トレンドとアクセサリー"],
-                  ["フード","人気のレストラン"]]},
-      zh:{slogan:"全球最佳价格，一键直达——其余交给我们。",
-          subs:"FindAllEasy — 全球版",
-          placeholderCycle:["酒店","机票","旅游","美食","时尚","服装","配饰","文具"],
-          searchBtn:"搜索",regionTitle:"你所在地区的热门商品",cardCta:"比较价格",
-          vitrin:[["旅行与住宿","附近的超值住宿"],
-                  ["电子产品","热门设备与优惠"],
-                  ["时尚","最新潮流与配饰"],
-                  ["美食","附近的人气餐厅"]]},
-      ko:{slogan:"전 세계 최저가를 한 번에 — 나머지는 우리가 처리합니다.",
-          subs:"FindAllEasy — 월드 에디션",
-          placeholderCycle:["호텔","티켓","투어","음식","패션","의류","액세서리","문구"],
-          searchBtn:"검색",regionTitle:"내 지역 인기 상품",cardCta:"가격 비교",
-          vitrin:[["여행 & 숙박","가까운 최고의 숙소"],
-                  ["전자제품","인기 기기 & 특가"],
-                  ["패션","최신 트렌드 & 액세서리"],
-                  ["음식","주변 인기 맛집"]]},
-      th:{slogan:"ราคาดีที่สุดทั่วโลกเพียงคลิกเดียว — ที่เหลือเราจัดการให้.",
-          subs:"FindAllEasy — เวิลด์เอดิชัน",
-          placeholderCycle:["โรงแรม","ตั๋ว","ทัวร์","อาหาร","แฟชั่น","เสื้อผ้า","เครื่องประดับ","เครื่องเขียน"],
-          searchBtn:"ค้นหา",regionTitle:"สินค้ายอดนิยมในพื้นที่ของคุณ",cardCta:"เปรียบเทียบราคา",
-          vitrin:[["ท่องเที่ยว & ที่พัก","ดีลที่พักสุดคุ้มใกล้คุณ"],
-                  ["อิเล็กทรอนิกส์","อุปกรณ์ยอดนิยมและโปรโมชัน"],
-                  ["แฟชั่น","เทรนด์ล่าสุด & แอคเซสซอรี่"],
-                  ["อาหาร","ร้านดังใกล้คุณ"]]}
-    };
+  // Apply texts
+  const $ = id => document.getElementById(id);
+  $('slogan').textContent = pack.s;
+  $('searchBtn').textContent = pack.btn;
 
-    const lang = T[base] ? base : 'en';
-    const pack = T[lang];
-    const $ = (id)=>document.getElementById(id);
-    $('slogan').textContent = pack.slogan;
-    $('subslogan').textContent = pack.subs;
-    $('searchBtn').textContent = pack.searchBtn;
-    $('regionTitle').textContent = '🌍 ' + pack.regionTitle;
+  // Placeholder cycle
+  const input = $('search');
+  let i = 0;
+  function cycle(){ input.placeholder = pack.ph[i % pack.ph.length]; i++; }
+  cycle();
+  setInterval(cycle, 2500);
 
-    const ph = pack.placeholderCycle;
-    const input = $('search');
-    let i = 0;
-    const setPH = ()=>{ input.placeholder = ph[i % ph.length]; i++; };
-    setPH();
-    setInterval(setPH, 2500);
+  // Voice search
+  const voiceBtn = $('voice');
+  if ('webkitSpeechRecognition' in window){
+    const rec = new webkitSpeechRecognition();
+    const speechMap = {tr:'tr-TR',en:'en-US',de:'de-DE',fr:'fr-FR',es:'es-ES',it:'it-IT',ru:'ru-RU',ar:'ar',ja:'ja-JP',zh:'zh-CN',ko:'ko-KR',th:'th-TH'};
+    rec.lang = speechMap[base] || 'en-US';
+    rec.continuous = false; rec.interimResults = false;
+    voiceBtn.onclick = ()=> rec.start();
+    rec.onresult = e => { input.value = e.results[0][0].transcript; };
+  } else {
+    voiceBtn.style.display = 'none';
+  }
 
-    const vitrinEl = $('vitrin');
-    const todayIndex = new Date().getDate() % pack.vitrin.length;
-    const ordered = [...pack.vitrin.slice(todayIndex), ...pack.vitrin.slice(0,todayIndex)];
-    ordered.forEach(([title,desc])=>{
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `<h3>${title}</h3><p>${desc}</p><span class="small">${pack.cardCta}</span>`;
-      vitrinEl.appendChild(card);
-    });
+  // Image search
+  document.getElementById('image').onclick = ()=> document.getElementById('imgInput').click();
+  document.getElementById('imgInput').onchange = (e)=>{
+    const f = e.target.files[0]; if (f) input.value = f.name;
+  };
 
-    document.getElementById('imageBtn').addEventListener('click', ()=> document.getElementById('fileInput').click());
-    document.getElementById('fileInput').addEventListener('change', (e)=>{
-      const f = e.target.files[0]; if (f) input.value = f.name;
-    });
-
-    const voiceBtn = document.getElementById('voiceBtn');
-    if ('webkitSpeechRecognition' in window){
-      const rec = new webkitSpeechRecognition();
-      rec.lang = (speechLocale[lang] || 'en-US');
-      rec.continuous = false; rec.interimResults = false;
-      voiceBtn.addEventListener('click', ()=> rec.start());
-      rec.onresult = (ev)=>{ input.value = ev.results[0][0].transcript; };
-    } else {
-      voiceBtn.style.display = 'none';
-    }
-  </script>
+  // Daily trend vitrin (headerless)
+  const vitrin = document.getElementById('vitrin');
+  const todayIndex = new Date().getDate() % pack.vit.length;
+  const ordered = [...pack.vit.slice(todayIndex), ...pack.vit.slice(0, todayIndex)];
+  ordered.forEach(title => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<h3>${title}</h3><p>${pack.s}</p>`;
+    vitrin.appendChild(card);
+  });
+})();
+</script>
 </body>
 </html>
